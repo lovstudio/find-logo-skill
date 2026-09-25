@@ -14,11 +14,11 @@ compatibility: >
   Cross-platform: macOS, Windows, Linux.
 metadata:
   author: contributors
-  version: "0.3.0"
+  version: "0.3.1"
   tags: [branding, assets, logo, scraping]
 ---
 
-# find-logo — collect brand logos, prefer wide + transparent
+# Logo 雷达 · Logo Radar
 
 Takes a brand name or URL, probes Clearbit + the site's own og:image /
 `<link rel=icon>` / favicon, scores each candidate, and archives the best
