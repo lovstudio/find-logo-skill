@@ -3,6 +3,13 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [0.3.3] - 2026-11-03
+
+### Changed
+
+- Replace discontinued Clearbit Logo API (`logo.clearbit.com`) with free no-key [FaviconDL](https://favicondl.com) extract API (`/api/extract?url=<domain>&size=256`)
+- Docs/SKILL wording updated to match the new primary source
+
 ## [0.3.2] - 2026-10-31
 
 ### Fixed

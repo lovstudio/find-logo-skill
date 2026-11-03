@@ -1,7 +1,7 @@
 ---
 name: lov-find-logo
 description: >
-  Fetch a company/product logo from public sources (Clearbit, og:image,
+  Fetch a company/product logo from public sources (FaviconDL, og:image,
   favicon) given a brand name or URL, score candidates (wide-aspect +
   transparent preferred), and archive the best + runner-ups to
   the configured logo collection directory.
@@ -14,13 +14,13 @@ compatibility: >
   Cross-platform: macOS, Windows, Linux.
 metadata:
   author: contributors
-  version: "0.3.2"
+  version: "0.3.3"
   tags: [branding, assets, logo, scraping]
 ---
 
 # Logo 雷达 · Logo Radar
 
-Takes a brand name or URL, probes Clearbit + the site's own og:image /
+Takes a brand name or URL, probes FaviconDL + the site's own og:image /
 `<link rel=icon>` / favicon, scores each candidate, and archives the best
 one plus a couple of alternates into the configured collection directory.
 
@@ -125,8 +125,8 @@ per run with `--out`, or set `SKILL_FIND_LOGO_OUTPUT_DIR` for the skill.
 
 - The name → domain guess is a crude lowercase-strip + `.com` suffix. For
   anything not on `.com`, pass `--url` explicitly.
-- No Clearbit API key is used — we hit the unauthenticated endpoint, which
-  covers most major brands but not all.
+- FaviconDL is free and needs no API key (Clearbit Logo API was discontinued).
+  Homepage scrape + Google s2 still cover gaps.
 - `WebSearch` fallback is Claude's responsibility, not the script's.
 
 ## Runtime context (shared)

@@ -1,8 +1,8 @@
 # Logo 雷达 · Logo Radar
 
-![Version](https://img.shields.io/badge/version-0.3.2-CC785C)
+![Version](https://img.shields.io/badge/version-0.3.3-CC785C)
 
-Fetch a brand/product logo from public sources (Clearbit, og:image, favicon),
+Fetch a brand/product logo from public sources (FaviconDL, og:image, favicon),
 score candidates (prefer wide-aspect + transparent), and archive the winner
 plus alternates under `~/.lovstudio/logo-collection/<slug>/`.
 
@@ -73,7 +73,7 @@ so they line up cleanly next to each other.
 
 ## Sources probed, in order
 
-1. **Clearbit Logo API** — `https://logo.clearbit.com/<domain>` (unauthenticated tier).
+1. **FaviconDL extract API** — `https://favicondl.com/api/extract?url=<domain>&size=256` (free, no API key; replaces the discontinued Clearbit Logo API).
 2. **og:image / twitter:image + `<link rel="icon">`** — scraped from the brand's homepage. Usually wins because sites ship a proper share card.
 3. **Google s2 favicon** — `https://www.google.com/s2/favicons?domain=<domain>&sz=256` as a safety net.
 

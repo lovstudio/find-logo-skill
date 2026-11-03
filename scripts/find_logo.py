@@ -3,7 +3,7 @@
 keep the best (prefer wide-aspect + transparent), archive to a per-brand dir.
 
 Sources tried (in order):
-  1. Clearbit Logo API            https://logo.clearbit.com/<domain>
+  1. FaviconDL extract API        https://favicondl.com/api/extract?url=<domain>&size=256
   2. Favicon (Google s2, 256px)   https://www.google.com/s2/favicons?domain=<domain>&sz=256
   3. og:image / twitter:image     scraped from https://<domain>/
   4. <link rel="icon"> variants   scraped from https://<domain>/
@@ -261,7 +261,7 @@ def score(info: dict) -> float:
 
 @dataclass
 class Candidate:
-    source: str       # clearbit / favicon / og / icon-link / manual
+    source: str       # favicondl / page / google-s2 / icon-link / manual
     url: str
     data: bytes
     info: dict
@@ -283,8 +283,12 @@ def try_candidates(domain: str) -> list[Candidate]:
             return
         cands.append(Candidate(source, url, data, info, score(info)))
 
-    # 1. Clearbit
-    add("clearbit", f"https://logo.clearbit.com/{domain}")
+    # 1. FaviconDL (free, no API key; Clearbit Logo API is discontinued)
+    # Follows redirect to /api/proxy and returns image bytes.
+    add(
+        "favicondl",
+        f"https://favicondl.com/api/extract?url={urllib.parse.quote(domain, safe='')}&size=256",
+    )
 
     # 2. og:image + link[rel=icon] on https://<domain>/
     for src_url in scrape_page_images(f"https://{domain}/"):
